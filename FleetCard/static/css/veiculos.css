@@ -1,0 +1,326 @@
+:root {
+    --fleet-blue: #0d6efd;
+    --fleet-blue-dark: #0756c9;
+    --fleet-cyan: #00bce4;
+    --fleet-dark: #1f2327;
+    --fleet-dark-2: #171a1d;
+    --fleet-card: #252a2f;
+    --fleet-white: #ffffff;
+    --fleet-gray: #aeb4bb;
+    --fleet-border: rgba(255, 255, 255, 0.08);
+}
+
+.fleet-page {
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(13, 110, 253, 0.13),
+            transparent 35%
+        ),
+        var(--fleet-dark);
+    min-height: 100vh;
+    padding: 55px 0 80px;
+    color: var(--fleet-white);
+}
+
+.fleet-header {
+    text-align: center;
+    margin-bottom: 55px;
+}
+
+.fleet-hero {
+    position: relative;
+    text-align: center;
+    padding: 55px 20px 65px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.fleet-hero::before {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    top: -300px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 188, 228, 0.12);
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+}
+
+.fleet-hero-label {
+    position: relative;
+    display: inline-block;
+    padding: 7px 18px;
+    margin-bottom: 22px;
+    border: 1px solid rgba(0, 188, 228, 0.3);
+    border-radius: 30px;
+    background: rgba(0, 188, 228, 0.1);
+    color: var(--fleet-cyan);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.fleet-hero h1 {
+    position: relative;
+    margin: 0;
+    color: var(--fleet-white);
+    font-size: clamp(2.5rem, 6vw, 4.2rem);
+    line-height: 1.05;
+    font-weight: 800;
+    letter-spacing: -2px;
+}
+
+.fleet-hero h1 span {
+    color: var(--fleet-cyan);
+}
+
+.fleet-hero-description {
+    position: relative;
+    max-width: 700px;
+    margin: 24px auto 0;
+    color: var(--fleet-gray);
+    font-size: 1.08rem;
+    line-height: 1.7;
+}
+
+.fleet-hero-features {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 15px;
+    margin: 38px auto 0;
+    max-width: 750px;
+}
+
+.fleet-feature {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 190px;
+    padding: 14px 20px;
+    text-align: left;
+    background: rgba(255, 255, 255, 0.045);
+    border: 1px solid var(--fleet-border);
+    border-radius: 14px;
+    transition: all 0.25s ease;
+}
+
+.fleet-feature:hover {
+    transform: translateY(-3px);
+    border-color: rgba(0, 188, 228, 0.3);
+    background: rgba(255, 255, 255, 0.07);
+}
+
+.fleet-feature > span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    background: rgba(13, 110, 253, 0.15);
+    font-size: 1.35rem;
+}
+
+.fleet-feature strong {
+    display: block;
+    color: var(--fleet-white);
+    font-size: 0.95rem;
+}
+
+.fleet-feature small {
+    display: block;
+    margin-top: 3px;
+    color: var(--fleet-gray);
+    font-size: 0.75rem;
+}
+
+.fleet-hero-bottom {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 40px;
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 0.78rem;
+}
+
+.fleet-hero-line {
+    width: 55px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.vehicle-card {
+    background: var(--fleet-card) !important;
+    border: 1px solid var(--fleet-border) !important;
+    border-radius: 18px !important;
+    overflow: hidden;
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+    color: white;
+}
+
+.vehicle-card:hover {
+    transform: translateY(-7px);
+    border-color: rgba(13, 110, 253, 0.55) !important;
+    box-shadow:
+        0 18px 35px rgba(0, 0, 0, 0.35),
+        0 0 25px rgba(13, 110, 253, 0.08);
+}
+
+.vehicle-image {
+    height: 190px;
+    width: 100%;
+    object-fit: cover;
+    background: var(--fleet-dark-2);
+    transition: transform 0.35s ease;
+}
+
+.vehicle-card:hover .vehicle-image {
+    transform: scale(1.03);
+}
+
+.vehicle-image-container {
+    position: relative;
+    overflow: hidden;
+    background: var(--fleet-dark-2);
+}
+
+.vehicle-image-container::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.55),
+        transparent 55%
+    );
+    pointer-events: none;
+}
+
+.vehicle-card .card-body {
+    padding: 20px;
+}
+
+.vehicle-card .card-title {
+    color: white;
+    font-size: 1.08rem;
+    margin-top: 4px;
+}
+
+.vehicle-card .card-text {
+    color: var(--fleet-gray) !important;
+    font-size: 0.92rem;
+}
+
+.vehicle-badge {
+    display: inline-block;
+    width: fit-content;
+    padding: 5px 11px;
+    border-radius: 20px;
+    background: rgba(13, 110, 253, 0.14);
+    border: 1px solid rgba(13, 110, 253, 0.25);
+    color: #65a5ff;
+    font-size: 0.73rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+.vehicle-button {
+    border: 0 !important;
+    background: var(--fleet-blue);
+    color: white !important;
+    border-radius: 10px;
+    padding: 10px 15px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.vehicle-button:hover {
+    background: var(--fleet-blue-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 7px 18px rgba(13, 110, 253, 0.25);
+}
+
+.empty-vehicles {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px dashed rgba(255, 255, 255, 0.12);
+    border-radius: 15px;
+    padding: 35px;
+    text-align: center;
+    color: var(--fleet-gray);
+}
+
+.fleet-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.fleet-section-title {
+    font-weight: 700;
+    color: var(--fleet-white);
+    margin-bottom: 2px;
+}
+
+.fleet-section-subtitle {
+    color: var(--fleet-gray);
+}
+
+/* fleet-feature agora também é usado como <a>, então precisa herdar cor */
+.fleet-feature,
+.fleet-feature:hover {
+    color: inherit;
+}
+
+/* vehicle-button precisa se comportar como bloco dentro do card */
+.vehicle-button {
+    display: block;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .fleet-hero {
+    padding: 35px 10px 45px;
+}
+
+.fleet-hero h1 {
+    font-size: 2.5rem;
+    letter-spacing: -1px;
+}
+
+.fleet-hero-description {
+    font-size: 0.95rem;
+}
+
+.fleet-hero-features {
+    flex-direction: column;
+    max-width: 350px;
+}
+
+.fleet-feature {
+    width: 100%;
+}
+
+.fleet-hero-bottom {
+    font-size: 0.7rem;
+}
+
+.fleet-hero-line {
+    width: 30px;
+    }
+}

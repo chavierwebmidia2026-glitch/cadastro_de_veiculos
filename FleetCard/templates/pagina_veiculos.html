@@ -1,41 +1,81 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %}
 Veículos | FleetCard
 {% endblock %}
 
 {% block content %}
 
+<link rel="stylesheet" href="{% static 'css/veiculos.css' %}">
+
+<div class="fleet-page">
 <div class="container py-5">
 
     <!-- Cabeçalho -->
 
-    <div class="text-center mb-5">
+    <div class="fleet-hero mb-5">
 
-        <h1 class="fw-bold display-5">
-            Catálogo de Veículos
+        <span class="fleet-hero-label">FLEETCARD • CATÁLOGO</span>
+
+        <h1>
+            Encontre o veículo <span>ideal para você.</span>
         </h1>
 
-        <p class="text-muted fs-5">
-            Consulte carros, motos e caminhões
+        <p class="fleet-hero-description">
+            Explore nossa seleção de carros, motos e caminhões. Compare opções,
+            conheça os modelos e encontre o veículo que combina com suas necessidades.
         </p>
+
+        <div class="fleet-hero-features">
+
+            <a href="#carros" class="fleet-feature text-decoration-none">
+                <span>🚗</span>
+                <div>
+                    <strong>Carros</strong>
+                    <small>{{ carros|length }} disponíveis</small>
+                </div>
+            </a>
+
+            <a href="#motos" class="fleet-feature text-decoration-none">
+                <span>🏍️</span>
+                <div>
+                    <strong>Motos</strong>
+                    <small>{{ motos|length }} disponíveis</small>
+                </div>
+            </a>
+
+            <a href="#caminhoes" class="fleet-feature text-decoration-none">
+                <span>🚛</span>
+                <div>
+                    <strong>Caminhões</strong>
+                    <small>{{ caminhoes|length }} disponíveis</small>
+                </div>
+            </a>
+
+        </div>
+
+        <div class="fleet-hero-bottom">
+            <span class="fleet-hero-line"></span>
+            <span>Veja nossas opções e escolha seu próximo veículo</span>
+            <span class="fleet-hero-line"></span>
+        </div>
 
     </div>
 
 
     <!-- Carros -->
 
-    <section class="mb-5">
+    <section class="mb-5" id="carros">
 
         <div class="d-flex justify-content-between align-items-center mb-4">
 
             <div>
 
-                <h2 class="fw-bold mb-1">
+                <h2 class="fw-bold mb-1 fleet-section-title">
                     🚗 Carros
                 </h2>
 
-                <p class="text-muted mb-0">
+                <p class="fleet-section-subtitle mb-0">
                     {{ carros|length }} veículos encontrados
                 </p>
 
@@ -62,7 +102,7 @@ Veículos | FleetCard
 
                     {% else %}
 
-                    <div class="vehicle-image d-flex align-items-center justify-content-center bg-light">
+                    <div class="vehicle-image d-flex align-items-center justify-content-center">
 
                         <span class="fs-1">
                             🚗
@@ -75,7 +115,7 @@ Veículos | FleetCard
 
                     <div class="card-body d-flex flex-column border border-1 border-info">
 
-                        <span class="badge bg-danger align-self-start mb-2">
+                        <span class="vehicle-badge align-self-start mb-2">
                             Carro
                         </span>
 
@@ -83,7 +123,7 @@ Veículos | FleetCard
                             {{ veiculo.Make_Name }}
                         </h5>
 
-                        <p class="card-text text-muted mb-3">
+                        <p class="card-text mb-3">
                             {{ veiculo.Model_Name }}
                         </p>
 
@@ -92,7 +132,7 @@ Veículos | FleetCard
 
                         <a
                             href="{% url 'ver_detalhes' 'car' veiculo.Make_Name veiculo.Model_Name %}"
-                            class="btn btn-outline-danger mt-auto"
+                            class="vehicle-button mt-auto"
                         >
                             Ver detalhes
                         </a>
@@ -107,7 +147,7 @@ Veículos | FleetCard
 
             <div class="col-12">
 
-                <div class="alert alert-warning">
+                <div class="empty-vehicles">
                     Nenhum carro encontrado.
                 </div>
 
@@ -122,15 +162,15 @@ Veículos | FleetCard
 
     <!-- Motos -->
 
-    <section class="mb-5">
+    <section class="mb-5" id="motos">
 
         <div class="mb-4">
 
-            <h2 class="fw-bold mb-1">
+            <h2 class="fw-bold mb-1 fleet-section-title">
                 🏍️ Motos
             </h2>
 
-            <p class="text-muted mb-0">
+            <p class="fleet-section-subtitle mb-0">
                 {{ motos|length }} veículos encontrados
             </p>
 
@@ -155,7 +195,7 @@ Veículos | FleetCard
 
                     {% else %}
 
-                    <div class="vehicle-image d-flex align-items-center justify-content-center bg-light">
+                    <div class="vehicle-image d-flex align-items-center justify-content-center">
 
                         <span class="fs-1">
                             🏍️
@@ -168,7 +208,7 @@ Veículos | FleetCard
 
                     <div class="card-body d-flex flex-column">
 
-                        <span class="badge bg-warning text-dark align-self-start mb-2">
+                        <span class="vehicle-badge align-self-start mb-2">
                             Moto
                         </span>
 
@@ -176,7 +216,7 @@ Veículos | FleetCard
                             {{ veiculo.Make_Name }}
                         </h5>
 
-                        <p class="card-text text-muted mb-3">
+                        <p class="card-text mb-3">
                             {{ veiculo.Model_Name }}
                         </p>
 
@@ -185,7 +225,7 @@ Veículos | FleetCard
 
                         <a
                             href="{% url 'ver_detalhes' 'moto' veiculo.Make_Name veiculo.Model_Name %}"
-                            class="btn btn-outline-warning mt-auto"
+                            class="vehicle-button mt-auto"
                         >
                             Ver detalhes
                         </a>
@@ -200,7 +240,7 @@ Veículos | FleetCard
 
             <div class="col-12">
 
-                <div class="alert alert-warning">
+                <div class="empty-vehicles">
                     Nenhuma moto encontrada.
                 </div>
 
@@ -215,15 +255,15 @@ Veículos | FleetCard
 
     <!-- Caminhões -->
 
-    <section class="mb-5">
+    <section class="mb-5" id="caminhoes">
 
         <div class="mb-4">
 
-            <h2 class="fw-bold mb-1">
+            <h2 class="fw-bold mb-1 fleet-section-title">
                 🚛 Caminhões
             </h2>
 
-            <p class="text-muted mb-0">
+            <p class="fleet-section-subtitle mb-0">
                 {{ caminhoes|length }} veículos encontrados
             </p>
 
@@ -248,7 +288,7 @@ Veículos | FleetCard
 
                     {% else %}
 
-                    <div class="vehicle-image d-flex align-items-center justify-content-center bg-light">
+                    <div class="vehicle-image d-flex align-items-center justify-content-center">
 
                         <span class="fs-1">
                             🚛
@@ -261,7 +301,7 @@ Veículos | FleetCard
 
                     <div class="card-body d-flex flex-column">
 
-                        <span class="badge bg-secondary align-self-start mb-2">
+                        <span class="vehicle-badge align-self-start mb-2">
                             Caminhão
                         </span>
 
@@ -269,7 +309,7 @@ Veículos | FleetCard
                             {{ veiculo.Make_Name }}
                         </h5>
 
-                        <p class="card-text text-muted mb-3">
+                        <p class="card-text mb-3">
                             {{ veiculo.Model_Name }}
                         </p>
 
@@ -278,7 +318,7 @@ Veículos | FleetCard
 
                         <a
                             href="{% url 'ver_detalhes' 'caminhao' veiculo.Make_Name veiculo.Model_Name %}"
-                            class="btn btn-outline-secondary mt-auto"
+                            class="vehicle-button mt-auto"
                         >
                             Ver detalhes
                         </a>
@@ -293,7 +333,7 @@ Veículos | FleetCard
 
             <div class="col-12">
 
-                <div class="alert alert-warning">
+                <div class="empty-vehicles">
                     Nenhum caminhão encontrado.
                 </div>
 
@@ -305,6 +345,7 @@ Veículos | FleetCard
 
     </section>
 
+</div>
 </div>
 
 {% endblock %}
