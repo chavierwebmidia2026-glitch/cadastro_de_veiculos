@@ -72,9 +72,9 @@ Ordens de Serviço | FleetCard
 
                 <table class="table table-striped table-hover align-middle">
 
-                    <thead class="table-white">
+                    <thead class="table-white text-white">
 
-                        <tr>
+                        <tr class=" text-white">
 
                             <th>ID</th>
                             <th>Veículo</th>
@@ -93,13 +93,14 @@ Ordens de Serviço | FleetCard
 
                         {% for ordem in ordens %}
 
-                        <tr class="ordem-pesquisa">
+
+                        <tr class="ordem-pesquisa ">
 
                             <!-- Dados para pesquisa -->
 
                             <td>
 
-                                <div class="d-none dados-pesquisa">
+                                <div class="d-none dados-pesquisa text-white">
 
                                     {{ ordem.veiculo.marca }}
 

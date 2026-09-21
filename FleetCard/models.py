@@ -37,6 +37,8 @@ class Cliente(models.Model):
         verbose_name='Data de cadastro'
     )
 
+    
+
     def __str__(self):
         return self.nome
 
